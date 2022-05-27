@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+</head>
+
+<body>
+    <form action="#">
+        <fieldset>
+            <legend>Add user</legend>
+            <div>
+                <label for="fname">First Name:</label>
+                <input type="text" name="first" id="fname">
+
+                <label for="lname">Last Name:</label>
+                <input type="text" name="last" id="lname">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+
+            <label for="status">Status</label>
+            <select name="status" id="status">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="guest">Guest</option>
+            </select>
+
+            <p>Choose your favorite programming language</p>
+            <label for="html">HTML</label>
+            <input type="radio" name="language" id="html">
+
+            <label for="css">CSS</label>
+            <input type="radio" name="language" id="css">
+
+            <label for="js">JavaScript</label>
+            <input type="radio" name="language" id="js">
+
+            <div>
+                <label for="comments">
+                    <p>Comments:</p>
+                </label>
+                <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+
+                <label for="date">Current Date</label>
+                <input type="date" name="date" id="date">
+            </div>
+
+            <label for="newsletter">Sign up for newsletter</label>
+            <input type="checkbox" name="newsletter" id="newsletter">
+
+            <label for="terms">Agree to terms and conditions</label>
+            <input type="checkbox" name="terms" id="terms">
+
+            <button>Submit</button>
+        </fieldset>
+
+    </form>
+</body>
+
+</html>
