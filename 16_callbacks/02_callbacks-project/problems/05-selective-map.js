@@ -37,13 +37,24 @@ console.log(selectiveMap([-10, 4, 7, 6, -2, -9], isPositive, square));
 
 AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
     (optional if you already asked a question for this problem.)
-- Explain how you are using both of the callbacks in the function.
-- What do you expect each callback function to be returning?
-- How many times are you calling each callback function?
+- Explain how you are using both of the callbacks in the function. // -> if first callback is true, modify the element with the second callback
+- What do you expect each callback function to be returning?    // -> cb1 returns a boolean, cb2 returns the modified value
+- How many times are you calling each callback function?    // -> cb1 is called on every element, cb2 is only called on elements where cb1 is true
 *******************************************************************************/
 
-let selectiveMap = function() {
-
+// p - array | cb | cb
+// r - new array
+// if first callback is true, modify with second callback
+let selectiveMap = function(arr, cb1, cb2) {
+    let newArr = []
+    arr.forEach(el => {
+        if (cb1(el)){
+            newArr.push(cb2(el))
+        } else {
+            newArr.push(el)
+        }
+    })
+    return newArr
 };
 
 

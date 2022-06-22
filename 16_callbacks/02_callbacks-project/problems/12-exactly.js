@@ -27,8 +27,15 @@ console.log(result4); // true
 
 *******************************************************************************/
 
-let exactly = function() {
+// p - arr, num, cb
+// r - boolean | same number of elements that are true as num
 
+let exactly = function(arr, num, cb) {
+    let count = 0
+    arr.forEach(el => {
+        if (cb(el)) count++
+    })
+    return count === num
 };
 
 

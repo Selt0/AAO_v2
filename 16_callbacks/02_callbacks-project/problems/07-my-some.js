@@ -23,8 +23,13 @@ let result3 = mySome(['soup', 'noodles', 'bike', 'ship'], function(ele) {
 console.log(result3);   // true
 *******************************************************************************/
 
-let mySome = function() {
-
+// p - arr | cb(el, i)
+// r - true if any elements return true when passed through cb
+let mySome = function(arr, cb) {
+   for (let i = 0; i < arr.length; i++){
+    if (cb(arr[i], i)) return true
+   }
+   return false
 };
 
 

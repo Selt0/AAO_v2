@@ -21,8 +21,17 @@ let hasA = function(s) {
 console.log(reject(['breadth', 'GRAPH', 'depth', 'height'], hasA)); // [ 'depth', 'height' ]
 *******************************************************************************/
 
-let reject = function() {
-
+// p - arr | cb
+// r - new arr
+// new arr contains values where cb is false
+let reject = function(arr, cb) {
+    let newArr = []
+    arr.forEach(el => {
+        if (!cb(el)){
+            newArr.push(el)
+        }
+    })
+    return newArr
 };
 
 

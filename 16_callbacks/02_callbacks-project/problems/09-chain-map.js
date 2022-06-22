@@ -29,8 +29,14 @@ console.log(chainMap(4, square, half));         // 8
 console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
 
-let chainMap = function() {
+// p - value, n callbacks
+// r - final result of value from all callbacks
 
+let chainMap = function(value, ...cbs) {
+    cbs.forEach(cb => {
+        value = cb(value)
+    })
+    return value
 };
 
 

@@ -27,9 +27,16 @@ console.log(andSelect(['ants', 'APPLES', 'ART', 'BACON', 'arm'], isUpperCase,  s
 // [ 'APPLES', 'ART' ]
 
 *******************************************************************************/
-
-let andSelect = function() {
-
+// p - arr | cb | cb
+// r - new arr of elements where cb1 and cb2 are true
+let andSelect = function(arr, cb1, cb2) {
+    let newArr = []
+    arr.forEach(el => {
+        if (cb1(el) && cb2(el)){
+            newArr.push(el)
+        }
+    })
+    return newArr
 };
 
 

@@ -31,8 +31,21 @@ console.log(suffixCipher('incremental progress is very instrumental', cipher2));
 // INCREMENTAL progressth isth very INSTRUMENTAL
 *******************************************************************************/
 
-let suffixCipher = function() {
+// p sentence , obj[ suffix: cb ]
+// r new sentence = word modified by cb based on suffix. If no matching suffix, return word
 
+let suffixCipher = function(sentence, obj) {
+    let newSentenceArr = []
+    sentence.split(' ').forEach(word => {
+        for (const [key, value] of Object.entries(obj)){
+            if (word.endsWith(key)){
+                return newSentenceArr.push(value(word))
+            }
+        }
+        return newSentenceArr.push(word)
+    })
+
+    return newSentenceArr.join(' ')
 };
 
 

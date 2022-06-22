@@ -17,9 +17,13 @@ mapMutator(arr2, function (el, i) {
 });
 console.log(arr2); // [ 0, 9, 20 ]
 *******************************************************************************/
-
-let mapMutator = function() {
-
+// p - arr cb
+// mutate value in arr with cb
+let mapMutator = function(arr, cb) {
+    arr.forEach((el,i) => {
+        arr[i] = cb(el, i)
+    })
+    return arr
 };
 
 
