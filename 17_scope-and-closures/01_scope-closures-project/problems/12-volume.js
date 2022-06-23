@@ -24,7 +24,18 @@ console.log(table2(75)); // STILL prints 6
 
 ***********************************************************************/
 
-// your code here
+function recVolume(height) {
+  let volume = [height]
+  return function(num){
+    if (volume.length !== 3){
+      volume.push(num)
+    }
+
+    if (volume.length === 3){
+      return volume.reduce((accum, val) => accum * val)
+    }
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

@@ -25,7 +25,16 @@ Example 3:
 
 ***********************************************************************/
 
-// your code here
+function coinCollector(numCoins) {
+  let coins = []
+  return function(coin){
+    numCoins--
+    coins.push(coin)
+    if (numCoins === 0){
+      return coins
+    }
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

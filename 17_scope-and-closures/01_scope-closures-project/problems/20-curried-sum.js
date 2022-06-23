@@ -42,7 +42,15 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   be useful
 ***********************************************************************/
 
-// your code here
+function curriedSum(numArgs){
+  let numbers = []
+  return function _curriedSum(num){
+    numbers.push(num)
+    if (numbers.length === numArgs) return numbers.reduce((accum, val) => accum + val)
+    return _curriedSum
+  }
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

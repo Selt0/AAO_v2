@@ -10,7 +10,11 @@ arrowAvgValue([2, 3, 7]); // => 4
 arrowAvgValue([100, 60, 64]); // => 74.66666666666667
 ***********************************************************************/
 
-// your code here!
+const arrowAvgValue = nums => {
+  let sum = 0
+  nums.forEach(num => sum += num)
+  return sum / nums.length
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

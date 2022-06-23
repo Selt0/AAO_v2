@@ -22,7 +22,21 @@ console.log(smoothie2("pineapple"));
 // prints "I'm having a smoothie with apples and bananas and berries and pineapple"
 ***********************************************************************/
 
-// your code here
+function smoothieMachine(...ingredients){
+  let smoothie = "I'm having a smoothie"
+  return function(...moreIngredients){
+    const allIngredients = [...ingredients, ...moreIngredients]
+    allIngredients.forEach(ingredient => {
+      if(!smoothie.includes('with')){
+        smoothie += ` with ${ingredient}`
+      } else {
+        smoothie += ` and ${ingredient}`
+      }
+    })
+    return smoothie
+  }
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
