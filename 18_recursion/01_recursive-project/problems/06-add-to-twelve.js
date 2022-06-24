@@ -12,7 +12,17 @@ addToTwelve([1, 12, 4, 7, 6]); // false
 addToTwelve([1]); // false
 ***********************************************************************/
 
-// your code here
+function addToTwelve(arr){
+  if (arr.length <= 1) return false
+
+  let firstEl = arr.shift()
+  if ((firstEl + arr[0]) === 12){
+    return true
+  } else {
+    return addToTwelve(arr)
+  }
+
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

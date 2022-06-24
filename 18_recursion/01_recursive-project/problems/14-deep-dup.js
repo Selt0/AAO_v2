@@ -36,7 +36,9 @@ console.log(x[0] === y[0]) // true
 
 ***********************************************************************/
 
-// your code here
+function deepDup(arr) {
+  return arr.map((el) => (Array.isArray(el) ? deepDup(el) : el))
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -11,7 +11,15 @@ sumToN(9)  // returns 45
 sumToN(-8)  // returns null
 ***********************************************************************/
 
-// your code here
+function sumToN(max){
+  if (max === 0) return 0
+
+  if (max > 0){
+    return max + sumToN(max - 1)
+  } else {
+    return null
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
