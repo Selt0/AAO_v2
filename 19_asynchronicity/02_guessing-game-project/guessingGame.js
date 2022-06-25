@@ -9,6 +9,7 @@ const play = () => {
     let min
     let max
     let secretNumber
+    let attempts
 
     rl.question('Enter a max number: ', grabMaxNumber)
 
@@ -26,10 +27,15 @@ const play = () => {
 
             console.log(`I'm thinking of a number between ${min} and ${max}...`)
 
-            askGuess()
+            rl.question('Enter max number of guesses: ',grabNumberOfGuesses)
         } else {
             play()
         }        
+    }
+    
+    function grabNumberOfGuesses(input){
+        attempts = input
+        askGuess()
     }
 
     function askGuess() {
@@ -38,7 +44,14 @@ const play = () => {
                 console.log('You win!')
                 rl.close()
             } else {
-                askGuess()
+                attempts--
+                if(isGameOver(attempts)){
+                    console.log('You\'re out of guesses.')
+                    console.log('You Lose.')
+                    rl.close()
+                } else {
+                    askGuess()
+                }
             }
         })
     }
@@ -75,4 +88,8 @@ function validInput(min,max){
     }
 
     return true
+}
+
+function isGameOver(attempts){
+    return attempts === 0
 }
