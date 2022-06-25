@@ -65,6 +65,26 @@ function processMove(cmd, cpu) {
   }
 }
 
+function isGameOver(wins, losses){
+  if (wins === 3){
+    gameOverMessage('winner')
+    return true
+  } else if (losses === 3) {
+    gameOverMessage('loser')
+    return true
+  } else {
+    return false
+  }
+}
+
+function gameOverMessage(message){
+  if (message === 'winner'){
+    console.log('You won the game!\n')
+  } else {
+    console.log('You lost the game.\n')
+  }
+}
+
 /******************************* MAIN FUNCTION *******************************/
 function promptInput(rl) {
   console.log(`${wins} wins - ${losses} losses - ${ties} ties`);
@@ -82,6 +102,11 @@ function promptInput(rl) {
       const cpu = getCPUMove()
 
       processMove(cmd, cpu)
+
+      if(isGameOver(wins, losses)){
+        rl.close()
+        return
+      }
      
     } else {
       console.log("\nInvalid command.\n");
