@@ -9,10 +9,27 @@ class Manager extends Employee {
     addEmployee(employee){
         this.employees.push(employee)
     }
+
+    calculateBonus(multiplier){
+        return (this.salary + this._totalSubSalary()) * multiplier
+    }
+
+    _totalSubSalary(){
+        let sum = 0
+        for (const employee of this.employees){
+            if (employee instanceof Manager){ 
+                sum += employee.salary + employee._totalSubSalary()
+            } else {
+                sum += employee.salary
+            }
+        }
+        return sum
+    }
 }
 
 
-const splinter = new Manager('Splinter', 100000, 'Sensei');
-console.log(splinter);
+
+
+
 
 module.exports = Manager
