@@ -1,3 +1,5 @@
+const { Food } = require('./food')
+
 class Player {
 
     constructor(name, startingRoom) {
@@ -32,24 +34,28 @@ class Player {
     }
 
     takeItem(itemName) {
-
-        // Fill this in
-
+        const item = this.currentRoom.getItemByName(itemName)
+        this.currentRoom.items = this.currentRoom.items.filter(roomItem => roomItem !== item)
+        this.items.push(item)
     }
 
     dropItem(itemName) {
+        const item = this.getItemByName(itemName)
+        this.items = this.items.filter(playerItem => playerItem !== item)
 
-        // Fill this in
+        this.currentRoom.items.push(item)
     }
 
     eatItem(itemName) {
-        // Fill this in
+        const item = this.getItemByName(itemName)
+        if (item instanceof Food){
+            this.items = this.items.filter(playerItem => playerItem != item)
+        }
 
     }
 
     getItemByName(name) {
-
-        // Fill this in
+        return this.items.filter(item => name == item.name)[0]
     }
 }
 

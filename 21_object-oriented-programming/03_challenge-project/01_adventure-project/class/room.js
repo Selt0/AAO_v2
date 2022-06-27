@@ -44,8 +44,7 @@ class Room {
     }
 
     getItemByName(name) {
-
-        // Fill this in
+        return this.items.filter(item => name == item.name)[0]
     }
 
 }
