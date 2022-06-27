@@ -29,6 +29,12 @@ module.exports = {
             name: "Southern point",
             description: "You are standing at the south point of a crossroad. To the north, you see an empty intersection.",
             exits: {n: 1}
+        },
+        {
+            id: 6,
+            name: "Wooden church",
+            description: "There are some broken windows, some benches flipped over, and an open area near the middle. The only exit is in the south behind some doors",
+            exits: {s: 1}
         }
     ],
     items: [
@@ -42,6 +48,11 @@ module.exports = {
             description: "A tasty looking sandwich",
             room: 2,
             isFood: true
+        },
+        {
+            name: "lighter",
+            description: "A windproof lighter that has an Antique Brass finish",
+            room: 6,
         }
     ]
 }
