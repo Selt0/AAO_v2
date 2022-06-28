@@ -34,33 +34,43 @@ class Player extends Character {
   }
 
   takeItem(itemName) {
+    const item = this.currentRoom.getItemByName(itemName)
+    // put item in player inventory
+    this.items.push(item)
 
-    // Fill this in
+    // remove items from room
+    this.currentRoom.items = this.currentRoom.items.filter(roomItems => roomItems !== item)
 
   }
 
   dropItem(itemName) {
+    const item = this.getItemByName(itemName)
+    // put item in room
+    this.currentRoom.items.push(item)
 
-    // Fill this in
+    // remove item from inventory
+    this.items = this.items.filter(playerItem => playerItem !== item)
 
   }
 
   eatItem(itemName) {
-
-    // Fill this in
-
+    const item = this.items.find(item => item.name === itemName)
+    if (item instanceof Food){
+      this.items = this.items.filter(playerItem => playerItem !== item)
+      return `Oh yeah, that ${item.name}, hit the spot.`
+    } else {
+      return 'Silly human, you can\'t eat a ${item.name}'
+    }
   }
 
   getItemByName(name) {
-
-    // Fill this in
-
+    return this.items.find(item => item.name === name)
   }
 
-  hit(name) {
-
-    // Fill this in
-
+  hit(name) {    
+    const enemy = this.currentRoom.getEnemyByName(name)
+    enemy.applyDamage(this.strength)
+    enemy.attackTarget = this
   }
 
   die() {
