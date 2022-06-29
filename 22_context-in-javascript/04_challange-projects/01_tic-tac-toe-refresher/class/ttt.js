@@ -17,15 +17,30 @@ class TTT {
     Screen.initialize(3, 3);
     Screen.setGridlines(true);
 
-    // Replace this with real commands
-    Screen.addCommand('t', 'test command (remove)', TTT.testCommand);
+    Screen.addCommand('up', 'moves cursor up', this.cursor.up.bind(this.cursor))
+    Screen.addCommand('down', 'moves cursor down', this.cursor.down.bind(this.cursor))
+    Screen.addCommand('left', 'moves cursor left', this.cursor.left.bind(this.cursor))
+    Screen.addCommand('right', 'moves cursor right', this.cursor.right.bind(this.cursor))
+
+    Screen.addCommand('o', 'places move on the board', TTT.placeMove.bind(this, 'O'))
+    Screen.addCommand('x', 'places move on the board', TTT.placeMove.bind(this, 'X'))
+
 
     Screen.render();
   }
 
-  // Remove this
-  static testCommand() {
-    console.log("TEST COMMAND");
+
+  static placeMove(symbol){
+    let row = this.cursor.row
+    let col = this.cursor.col
+
+    this.grid[row][col] = symbol
+    Screen.setGrid(row, col, symbol)
+
+    let winner = TTT.checkWin(this.grid)
+    if (winner){
+      TTT.endGame(winner)
+    }
   }
 
   static checkWin(grid) {
@@ -59,7 +74,7 @@ class TTT {
   }
 
   static isEmpty(grid){
-    return grid.every(row => row.every(cell => cell === ' '))
+    return grid.every(row => TTT.checkAll(row, ' '))
   }
 
   static horizontalWin(grid){

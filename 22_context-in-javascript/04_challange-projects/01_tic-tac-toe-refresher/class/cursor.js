@@ -23,29 +23,39 @@ class Cursor {
   }
 
   up() {
-    // move cursor up
+    this.resetBackgroundColor()
     if (this.row !== 0){
-      return this.row--
+       this.row--
     }
+    this.setBackgroundColor()
+    Screen.render()
   }
 
   down() {
-    // Move cursor down
+    this.resetBackgroundColor()
     if (this.row !== 2){
-     return this.row++
+      this.row++
     }
+    this.setBackgroundColor()
+    Screen.render()
   }
 
   left() {
+    this.resetBackgroundColor()
     if (this.col !== 0){
-      return this.col--
+       this.col--
     }
+    this.setBackgroundColor()
+    Screen.render()
   }
 
   right() {
+    this.resetBackgroundColor()
     if (this.col !== 2){
-      return this.col++
+       this.col++
     }
+    this.setBackgroundColor()
+    Screen.render()
   }
 
 }
