@@ -29,12 +29,21 @@ class TTT {
   }
 
   static checkWin(grid) {
-
     // Return 'X' if player X wins
     // Return 'O' if player O wins
-    // Return 'T' if the game is a tie
-    // Return false if the game has not ended
+    let winner = TTT.horizontalWin(grid) ||
+                 TTT.verticalWin(grid) ||
+                 TTT.diagonalWin(grid)
 
+    if (TTT.isEmpty(grid)){
+      return false
+    } else if (winner){
+      return winner
+    } else if (TTT.isTie(grid)){
+      return 'T'
+    } else if (TTT.onGoingGame(grid)){
+      return false
+    }
   }
 
   static endGame(winner) {
@@ -47,6 +56,79 @@ class TTT {
     }
     Screen.render();
     Screen.quit();
+  }
+
+  static isEmpty(grid){
+    return grid.every(row => row.every(cell => cell === ' '))
+  }
+
+  static horizontalWin(grid){
+   if (grid.some(row => TTT.checkAll(row, 'X'))){
+    return 'X'
+   } else if (grid.some(row => TTT.checkAll(row, 'O'))){
+    return 'O'
+   } else {
+    return false
+   }
+  }
+
+  static verticalWin(grid){
+    for (let i = 0; i < grid.length; i++){
+      let col = []
+      for (let j = 0; j < grid[i].length; j++){
+        col.push(grid[j][i])
+      }
+
+      if (TTT.checkAll(col, 'X')){
+        return 'X'
+      } else if (TTT.checkAll(col, 'O')){
+        return 'O'
+      }
+    }
+    return false
+  }
+
+  static diagonalWin(grid){
+    // first cross = [0,0] [1,1] [2,2]
+    let cross = []
+    for (let i = 0; i < grid.length; i++){
+      cross.push(grid[i][i])
+    }
+
+    if (TTT.checkAll(cross, 'X')){
+      return 'X'
+    } else if (TTT.checkAll(cross, 'O')){
+      return 'O'
+    }
+
+    //second cross = [0,2] [1,1] [2,0]
+    cross = []
+    for(let i = 0, j = 2; i < grid.length; i++, j--){
+      cross.push(grid[j][i])
+    }
+
+    if (TTT.checkAll(cross, 'X')){
+      return 'X'
+    } else if (TTT.checkAll(cross, 'O')){
+      return 'O'
+    }
+    return false
+  }
+
+  static isTie(grid){
+    return grid.every(row => row.every(cell => cell !== ' '))
+  }
+
+  static onGoingGame(grid){
+    return grid.some(row => row.some(cell => cell === ' '))
+  }
+
+  static checkAll(arr, symbol){
+    if (arr.every(cell => cell === symbol)){
+      return true
+    }
+
+    return false
   }
 
 }

@@ -23,19 +23,29 @@ class Cursor {
   }
 
   up() {
-    // Move cursor up
+    // move cursor up
+    if (this.row !== 0){
+      return this.row--
+    }
   }
 
   down() {
     // Move cursor down
+    if (this.row !== 2){
+     return this.row++
+    }
   }
 
   left() {
-    // Move cursor left
+    if (this.col !== 0){
+      return this.col--
+    }
   }
 
   right() {
-    // Move cursor right
+    if (this.col !== 2){
+      return this.col++
+    }
   }
 
 }
